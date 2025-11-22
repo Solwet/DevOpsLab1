@@ -215,6 +215,7 @@ docker compose up --build -d
 12.**Если все работает, то получаем по адресу** *http://localhost:1234/*
 Привет мир!
 ✅ Успешное подключение к PostgreSQL!
+
 <img width="714" height="210" alt="image" src="https://github.com/user-attachments/assets/50347712-6f05-4d99-88bd-1386b4c3001e" />
 
    
