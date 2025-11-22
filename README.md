@@ -21,11 +21,12 @@
 ---
 2. **Перезапуск пк**
 ---
-4. **Обновление системы внутри WSL**
+3. **Обновление системы внутри WSL**
    ```bash
    sudo apt update && sudo apt upgrade -y
    ```
-5. **Установка Docker и docker-compose**
+---
+4. **Установка Docker и docker-compose**
    4.1 Установка зависимостей
    ```bash
    sudo apt install -y ca-certificates curl gnupg lsb-release
@@ -55,6 +56,8 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
    ```bash
    sudo usermod -aG docker $USER
    ```
+---
+
 5 **Создаем приложение и Dockerfile**
    5.1 создаем папку проекта
  ```bash
@@ -108,6 +111,7 @@ ls -l
 ```bash
 docker build -t myapp .
 ```
+---
 
 7. **Запусти контейнер**
 ```bash
@@ -116,6 +120,9 @@ docker run -d -p 1234:1234 --name myapp_container myapp
    7.1 Проверь в браузере Windows:
        http://localhost:1234/
        <img width="641" height="88" alt="image" src="https://github.com/user-attachments/assets/39831f07-699f-42c1-aeaf-1db431e79a25" />
+
+---
+
 8. **Создаем docker-comprose.yml**
 ```bash
 cat > docker-compose.yml << 'EOF'
@@ -147,6 +154,7 @@ volumes:
   pg
 EOF
 ```
+---
 
 9. **Обновим код app.py для проверки подключения к PostgreSQL**
     
@@ -179,6 +187,8 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     HTTPServer(('', 1234), Handler).serve_forever()
 ```
+---
+
 10. **Обновим DockerFile**
 ```bash
 FROM python:3.11-slim
@@ -193,10 +203,14 @@ RUN pip install psycopg2-binary
 
 CMD ["python3", "app.py"]
 ```
+---
+
 11. **Собираем**
 ```bash
 docker compose up --build -d
 ```
+---
+
 12.**Если все работает, то получаем по адресу** *http://localhost:1234/*
 Привет мир!
 ✅ Успешное подключение к PostgreSQL!
