@@ -99,10 +99,14 @@ EOF
 ls -l
 ```
    <img width="637" height="96" alt="image" src="https://github.com/user-attachments/assets/820624a7-3e59-4210-a454-d68696f5df6c" />
+   
+---
+
 6. **Cобери образ**
 ```bash
 docker build -t myapp .
 ```
+
 7. **Запусти контейнер**
 ```bash
 docker run -d -p 1234:1234 --name myapp_container myapp
