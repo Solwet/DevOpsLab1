@@ -62,3 +62,20 @@
    
    5.2 Пишем программу на python
       5.2.1 Создаем файл
+      ```
+      cat > app.py << 'EOF'
+      from http.server import HTTPServer, BaseHTTPRequestHandler
+      class Handler(BaseHTTPRequestHandler):
+          def do_GET(self):
+              self.send_response(200)
+              self.send_header("Content-type", "text/plain; charset=utf-8")
+              self.end_headers()
+              self.wfile.write("Привет мир!".encode('utf-8'))
+      if __name__ == "__main__":
+          server = HTTPServer(('', 1234), Handler)
+          print("Сервер запущен на порту 1234...")
+          server.serve_forever()
+      EOF
+      ```
+   5.3 Добавляем докер файл
+   
