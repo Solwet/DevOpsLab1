@@ -59,23 +59,26 @@
    mkdir ~/myapp && cd ~/myapp
    ```
    <img width="311" height="83" alt="image" src="https://github.com/user-attachments/assets/2e2d25cb-d280-4330-bf75-86447fdf263f" />
-   
-   5.2 Пишем программу на python
-      5.2.1 Создаем файл
-      ```bash
-      cat > app.py << 'EOF'
-      from http.server import HTTPServer, BaseHTTPRequestHandler
-      class Handler(BaseHTTPRequestHandler):
-          def do_GET(self):
-              self.send_response(200)
-              self.send_header("Content-type", "text/plain; charset=utf-8")
-              self.end_headers()
-              self.wfile.write("Привет мир!".encode('utf-8'))
-      if __name__ == "__main__":
-          server = HTTPServer(('', 1234), Handler)
-          print("Сервер запущен на порту 1234...")
-          server.serve_forever()
-      EOF
-      ```
+
+   5.2 Написание простого Python-приложения
+
+Создайте файл `app.py`:
+```bash
+cat > app.py << 'EOF'
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain; charset=utf-8")
+        self.end_headers()
+        self.wfile.write("Привет мир!".encode('utf-8'))
+
+if __name__ == "__main__":
+    server = HTTPServer(('', 1234), Handler)
+    print("Сервер запущен на порту 1234...")
+    server.serve_forever()
+EOF
+```
    5.3 Добавляем докер файл
    
