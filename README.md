@@ -18,12 +18,14 @@
    ```powershell
    wsl --install
    ```
+---
 2. **Перезапуск пк**
-3. **Обновление системы внутри WSL**
+---
+4. **Обновление системы внутри WSL**
    ```bash
    sudo apt update && sudo apt upgrade -y
    ```
-4. **Установка Docker и docker-compose**
+5. **Установка Docker и docker-compose**
    4.1 Установка зависимостей
    ```bash
    sudo apt install -y ca-certificates curl gnupg lsb-release
