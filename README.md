@@ -52,6 +52,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
    ```
    <img width="488" height="74" alt="image" src="https://github.com/user-attachments/assets/75e6e31d-6e70-4e86-a6a8-a6f9d0d83d4c" />
    <img width="372" height="43" alt="image" src="https://github.com/user-attachments/assets/2f5a6712-4324-4703-a920-1f45ca93e23d" />
+   
    4.6 Добавляем себя в группу докер, чтобы не прописывать sudo
    ```bash
    sudo usermod -aG docker $USER
