@@ -62,7 +62,7 @@
    
    5.2 Пишем программу на python
       5.2.1 Создаем файл
-      ```
+      ```bash
       cat > app.py << 'EOF'
       from http.server import HTTPServer, BaseHTTPRequestHandler
       class Handler(BaseHTTPRequestHandler):
