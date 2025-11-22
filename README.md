@@ -141,7 +141,9 @@ volumes:
   pg
 EOF
 ```
+
 9. **Обновим код app.py для проверки подключения к PostgreSQL**
+    
 ```bash
 import os
 import psycopg2
