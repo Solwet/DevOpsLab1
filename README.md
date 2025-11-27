@@ -10,9 +10,11 @@
 
 ---
 
-## Скачать докер на винду
+## Подготовка
 переходим по ссылке https://www.docker.com/products/docker-desktop/
 и скачиваем Docker Deskstop
+
+Заходим в Microsoft Strore и устанавливаем Ubuntu
 
 ---
 
@@ -46,12 +48,7 @@
 ---
 3. **Обновление системы внутри WSL**
 
-Чтобы зайти в систему Линукс, необходимо прописать в PowerShell wsl
-
-<img width="332" height="64" alt="image" src="https://github.com/user-attachments/assets/f8bc6ec6-4410-484f-8f45-3d3be8efbc3c" />
-
-
-
+Запускаем Ubuntu например через поиск. В нем пишем команду 
 
    ```bash
    sudo apt update && sudo apt upgrade -y
