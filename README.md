@@ -53,6 +53,7 @@
    ```bash
    sudo apt update && sudo apt upgrade -y
    ```
+и ждем окончание обновления
 ---
 4. **Установка Docker и docker-compose**
    4.1 Установка зависимостей
