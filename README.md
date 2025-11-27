@@ -158,7 +158,36 @@ EXPOSE 1234
 CMD ["python", "app.py"]
 EOF
 ```
-   5.4 Убедись что файлы в системе:
+
+   5.6 Добавляем docker-compose.yml
+
+   ```bash
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "1234:1234"
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpass
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpass
+    # ports:
+    #   - "5432:5432"   # ← закомментировано, чтобы не конфликтовать с локальным PostgreSQL
+```
+
+   5.5 Убедись что файлы в системе:
 ```bash
 ls -l
 ```
@@ -182,99 +211,6 @@ docker run -d -p 1234:1234 --name myapp_container myapp
 
 ---
 
-8. **Создаем docker-comprose.yml**
-```bash
-cat > docker-compose.yml << 'EOF'
-version: '3.8'
-
-services:
-  app:
-    build: .
-    ports:
-      - "1234:1234"
-    depends_on:
-      - db
-    environment:
-      - DB_HOST=db
-      - DB_USER=myuser
-      - DB_PASSWORD=mypass
-      - DB_NAME=mydb
-
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypass
-      POSTGRES_DB: mydb
-    volumes:
-      - pg/var/lib/postgresql/data
-
-volumes:
-  pg
-EOF
-```
----
-
-9. **Обновим код app.py для проверки подключения к PostgreSQL**
-    
-```bash
-import os
-import psycopg2
-from http.server import HTTPServer, BaseHTTPRequestHandler
-
-def check_db():
-    try:
-        conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'db'),
-            user=os.getenv('DB_USER', 'myuser'),
-            password=os.getenv('DB_PASSWORD', 'mypass'),
-            dbname=os.getenv('DB_NAME', 'mydb')
-        )
-        conn.close()
-        return "✅ БД доступна"
-    except Exception as e:
-        return f"❌ Ошибка БД: {e}"
-
-class Handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/plain; charset=utf-8")
-        self.end_headers()
-        msg = "Привет мир!\n" + check_db()
-        self.wfile.write(msg.encode('utf-8'))
-
-if __name__ == "__main__":
-    HTTPServer(('', 1234), Handler).serve_forever()
-```
----
-
-10. **Обновим DockerFile**
-```bash
-FROM python:3.11-slim
-
-RUN apt-get update && apt-get install -y gcc libpq-dev && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
-COPY app.py .
-
-RUN pip install psycopg2-binary
-
-CMD ["python3", "app.py"]
-```
----
-
-11. **Собираем**
-```bash
-docker compose up --build -d
-```
----
-
-12.**Если все работает, то получаем по адресу** *http://localhost:1234/*
-Привет мир!
-✅ Успешное подключение к PostgreSQL!
-
-<img width="714" height="210" alt="image" src="https://github.com/user-attachments/assets/50347712-6f05-4d99-88bd-1386b4c3001e" />
 
    
    
