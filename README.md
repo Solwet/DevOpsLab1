@@ -8,7 +8,9 @@
 > ✅ Успешное подключение к PostgreSQL!
 > ```
 
-
+##Скачать докер на винду
+переходим по ссылке https://www.docker.com/products/docker-desktop/
+и скачиваем Docker Deskstop
 
 ---
 
