@@ -131,6 +131,14 @@ EOF
 nano requirements.txt
 ```
 
+Записываем 
+
+```bash
+Flask
+psycopg2-binary
+```
+Жмем ctrl + O, enter, ctrl + x
+
 
 
    5.3 Добавляем докер файл
@@ -139,6 +147,9 @@ cat > Dockerfile << 'EOF'
 FROM python:3.11-slim
 
 WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py .
 
