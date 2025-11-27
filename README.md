@@ -126,7 +126,7 @@ EOF
 ```
 
 ---
-
+## Создаем requirements.txt
 ```bash
 nano requirements.txt
 ```
