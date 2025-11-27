@@ -1,12 +1,5 @@
 # Docker-стек: Python-приложение + PostgreSQL
 
-Минимальный рабочий пример веб-приложения на Python с подключением к PostgreSQL, упакованный в Docker-контейнеры и развёрнутый через `docker compose` в WSL.
-
-> **Ответ:** При обращении к `http://localhost:1234` возвращается:  
-> ```
-> Привет мир!
-> ✅ Успешное подключение к PostgreSQL!
-> ```
 
 ---
 
@@ -95,7 +88,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
  ```
    <img width="311" height="83" alt="image" src="https://github.com/user-attachments/assets/2e2d25cb-d280-4330-bf75-86447fdf263f" />
 
-   5.2 Написание простого Python-приложения
+   5.2 Написание простого Python-приложения и добавление файла requirements.txt
 
 Создайте файл `app.py`:
 ```bash
@@ -124,14 +117,22 @@ def hello():
         cur.close()
         conn.close()
         return "Привет Докер и postgres!"
-    except Exception:
-        return "Извините, но подключения к базе не случилось :("
+    except Exception as e:
+        return f"Извините, но подключения к базе не случилось :( Ошибка: {str(e)}"
 
 if __name__ == '__main__':
-    app_port = int(os.getenv('APP_PORT', 1234))
-    app.run(host='0.0.0.0', port=app_port)
+    app.run(host='0.0.0.0', port=1234)
 EOF
 ```
+
+---
+
+```bash
+nano requirements.txt
+```
+
+
+
    5.3 Добавляем докер файл
 ```bash
 cat > Dockerfile << 'EOF'
