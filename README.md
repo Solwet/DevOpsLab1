@@ -159,7 +159,7 @@ CMD ["python", "app.py"]
 EOF
 ```
 
-   5.6 Добавляем docker-compose.yml
+   5.4 Добавляем docker-compose.yml
 
    ```bash
 version: '3.8'
