@@ -100,19 +100,36 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 Создайте файл `app.py`:
 ```bash
 cat > app.py << 'EOF'
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from flask import Flask
+import psycopg2
+import os
 
-class Handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/plain; charset=utf-8")
-        self.end_headers()
-        self.wfile.write("Привет мир!".encode('utf-8'))
+app = Flask(__name__)
 
-if __name__ == "__main__":
-    server = HTTPServer(('', 1234), Handler)
-    print("Сервер запущен на порту 1234...")
-    server.serve_forever()
+def get_db_connection():
+    conn = psycopg2.connect(
+        host=os.getenv('POSTGRES_HOST', 'db'),
+        database=os.getenv('POSTGRES_DB', 'testdb'),
+        user=os.getenv('POSTGRES_USER', 'testuser'),
+        password=os.getenv('POSTGRES_PASSWORD', 'testpass')
+    )
+    return conn
+
+@app.route('/')
+def hello():
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('SELECT 1')
+        cur.close()
+        conn.close()
+        return "Привет Докер и postgres!"
+    except Exception:
+        return "Извините, но подключения к базе не случилось :("
+
+if __name__ == '__main__':
+    app_port = int(os.getenv('APP_PORT', 1234))
+    app.run(host='0.0.0.0', port=app_port)
 EOF
 ```
    5.3 Добавляем докер файл
