@@ -191,7 +191,8 @@ services:
 ```bash
 ls -l
 ```
-   <img width="637" height="96" alt="image" src="https://github.com/user-attachments/assets/820624a7-3e59-4210-a454-d68696f5df6c" />
+   <img width="545" height="116" alt="image" src="https://github.com/user-attachments/assets/e2a07bcb-0a70-405b-b385-319c0ae895bc" />
+
    
 ---
 
