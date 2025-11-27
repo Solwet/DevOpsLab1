@@ -183,8 +183,6 @@ services:
       - POSTGRES_DB=testdb
       - POSTGRES_USER=testuser
       - POSTGRES_PASSWORD=testpass
-    # ports:
-    #   - "5432:5432"   # ← закомментировано, чтобы не конфликтовать с локальным PostgreSQL
 ```
 
    5.5 Убедись что файлы в системе:
@@ -198,18 +196,14 @@ ls -l
 
 6. **Cобери образ**
 ```bash
-cd ~/myapp
 docker-compose up --build -d
 ```
 ---
 
-7. **Запусти контейнер**
-```bash
-docker run -d -p 1234:1234 --name myapp_container myapp
-```
-   7.1 Проверь в браузере Windows:
+7 Проверь в браузере Windows:
        http://localhost:1234/
-       <img width="641" height="88" alt="image" src="https://github.com/user-attachments/assets/39831f07-699f-42c1-aeaf-1db431e79a25" />
+       <img width="421" height="154" alt="image" src="https://github.com/user-attachments/assets/13d80dd6-63ad-4fb7-a2ff-4562de57d0c2" />
+
 
 ---
 
