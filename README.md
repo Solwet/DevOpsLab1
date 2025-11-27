@@ -198,7 +198,8 @@ ls -l
 
 6. **Cобери образ**
 ```bash
-docker build -t myapp .
+cd ~/myapp
+docker-compose up --build -d
 ```
 ---
 
