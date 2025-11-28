@@ -48,7 +48,7 @@
    ```
 и ждем окончание обновления
 ---
-4. **Установка Docker и docker-compose**
+4. **Установка Docker и docker-compose** (*Выполняем пункт 4.5 если выводит, как на скриншоте с данного подпункта, то пропускаем весь 4 пункт*)
    4.1 Установка зависимостей
    ```bash
    sudo apt install -y ca-certificates curl gnupg lsb-release
