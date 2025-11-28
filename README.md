@@ -9,6 +9,9 @@
 
 Заходим в Microsoft Strore и устанавливаем Ubuntu
 
+<img width="1008" height="379" alt="image" src="https://github.com/user-attachments/assets/05ba346a-d48f-4521-90a3-b9efb5fa6b75" />
+
+
 ---
 
 
