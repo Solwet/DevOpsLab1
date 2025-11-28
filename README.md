@@ -202,6 +202,12 @@ docker-compose up --build -d
 ```
 ---
 
+Так же все запустить можно из приложения Docker-Dekstop
+
+<img width="1253" height="708" alt="image" src="https://github.com/user-attachments/assets/fd6309e6-eeae-4d77-9a2c-8da3e5ce7939" />
+
+---
+
 7 Проверь в браузере Windows:
        http://localhost:1234/
        <img width="421" height="154" alt="image" src="https://github.com/user-attachments/assets/13d80dd6-63ad-4fb7-a2ff-4562de57d0c2" />
