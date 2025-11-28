@@ -195,6 +195,8 @@ ls -l
 ---
 
 6. **Cобери образ**
+***Убедись что ты в папке ~/myapp***
+   (Чтобы зайти cd ~/myapp) 
 ```bash
 docker-compose up --build -d
 ```
